@@ -10,6 +10,8 @@ import {
   useTheme,
 } from "native-base";
 import {
+  ArrowDown2,
+  ArrowUp2,
   Bag2,
   Bookmark,
   DollarCircle,
@@ -45,6 +47,7 @@ import { setUser } from "../../store/user.reducer";
 import { Ionicons } from "@expo/vector-icons";
 import { useIsFocused } from "@react-navigation/native";
 import { selectCategory } from "../../data/utils";
+import { Image } from "expo-image";
 type Props = {} & NativeStackScreenProps<RootStackParams, "Restaurant">;
 
 const Restaurant = (props: Props) => {
@@ -52,6 +55,7 @@ const Restaurant = (props: Props) => {
   const { id } = route.params;
   const { colors } = useTheme();
   const dispatch = useAppDispatch();
+  const [showService, setShowService] = useState(false);
   const [listComment, setListComment] = useState<IComment[]>([]);
   const [isNotCommented, setIsNotCommented] = useState<boolean | null>(null);
   const [rating, setRating] = useState(0);
@@ -143,6 +147,10 @@ const Restaurant = (props: Props) => {
     fetchComment();
   }, [isFocused]);
 
+  if (!res) {
+    return;
+  }
+
   return (
     <Box flex={1} bgColor={"#fff"}>
       <Box height="350">
@@ -191,85 +199,126 @@ const Restaurant = (props: Props) => {
           </VStack>
         </BackgroundLayout>
       </Box>
-      <VStack
-        p={4}
-        space={2}
-        borderBottomWidth={1}
-        borderColor={"coolGray.200"}
-      >
-        <HStack alignItems={"center"} space={1}>
-          <Location size="20" color={colors.coolGray[500]} />
-          <Text
-            color={"coolGray.500"}
-            fontWeight={400}
-            fontSize={14}
-            paddingRight={8}
-          >
-            {res?.address}
+      <ScrollView>
+        <VStack
+          p={4}
+          space={2}
+          borderBottomWidth={1}
+          borderColor={"coolGray.200"}
+        >
+          <Text fontSize={"sm"} color={"#000"}>
+            {res?.description}
           </Text>
-        </HStack>
-        <HStack alignItems={"center"} space={1}>
-          <Gps size="20" color={colors.coolGray[500]} />
-          <Text color={"primary.600"} fontWeight={500} fontSize={14}>
-            {distanceUser.toFixed(2)} km
-          </Text>
-        </HStack>
-        <HStack alignItems={"center"} space={1}>
-          <Bag2 size="20" color={colors.coolGray[500]} />
-          <Text color={"coolGray.500"} fontWeight={400} fontSize={14}>
-            {res?.category
-              .map((cat: any) => selectCategory[cat].label)
-              .toString()
-              .replaceAll(",", " - ")}
-          </Text>
-        </HStack>
-        <HStack justifyContent={"space-between"}>
           <HStack alignItems={"center"} space={1}>
-            <DollarCircle size="20" color={colors.coolGray[500]} />
-            <Text color={"coolGray.500"} fontWeight={400} fontSize={14}>
-              {formatNumberToCurrency(res?.price.min || 0, "đ")} -{" "}
-              {formatNumberToCurrency(res?.price.max || 0, "đ")}
+            <Location size="20" color={colors.coolGray[500]} />
+            <Text
+              color={"coolGray.500"}
+              fontWeight={400}
+              fontSize={14}
+              paddingRight={8}
+            >
+              {res?.address}
             </Text>
           </HStack>
-          <HStack space={2} alignItems={"center"}>
-            {isNotCommented && (
+          <HStack alignItems={"center"} space={1}>
+            <Gps size="20" color={colors.coolGray[500]} />
+            <Text color={"primary.600"} fontWeight={500} fontSize={14}>
+              {distanceUser.toFixed(2)} km
+            </Text>
+          </HStack>
+          <HStack alignItems={"center"} space={1}>
+            <Bag2 size="20" color={colors.coolGray[500]} />
+            <Text color={"coolGray.500"} fontWeight={400} fontSize={14}>
+              {res?.category
+                .map((cat: any) => selectCategory[cat].label)
+                .toString()
+                .replaceAll(",", " - ")}
+            </Text>
+          </HStack>
+          <HStack justifyContent={"space-between"}>
+            <HStack alignItems={"center"} space={1}>
+              <DollarCircle size="20" color={colors.coolGray[500]} />
+              <Text color={"coolGray.500"} fontWeight={400} fontSize={14}>
+                {formatNumberToCurrency(res?.price.min || 0, "đ")} -{" "}
+                {formatNumberToCurrency(res?.price.max || 0, "đ")}
+              </Text>
+            </HStack>
+            <HStack space={2} alignItems={"center"}>
+              {isNotCommented && (
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.navigate("CommentForm", {
+                      id: id,
+                      restaurant: {
+                        ...res,
+                        rating: rating || 0,
+                        commentCount: listComment.length || 0,
+                      },
+                    });
+                  }}
+                >
+                  <Messages3 size="24" color={colors.coolGray[500]} />
+                </TouchableOpacity>
+              )}
               <TouchableOpacity
                 onPress={() => {
-                  navigation.navigate("CommentForm", {
-                    id: id,
-                    restaurant: {
-                      ...res,
-                      rating: rating || 0,
-                      commentCount: listComment.length || 0,
-                    },
-                  });
+                  handleBookmarkRes();
                 }}
               >
-                <Messages3 size="24" color={colors.coolGray[500]} />
+                <Ionicons
+                  name={isBookmarkRes ? "bookmark" : "bookmark-outline"}
+                  size={24}
+                  color={
+                    isBookmarkRes ? colors.primary[600] : colors.coolGray[500]
+                  }
+                />
               </TouchableOpacity>
-            )}
-            <TouchableOpacity
-              onPress={() => {
-                handleBookmarkRes();
-              }}
-            >
-              <Ionicons
-                name={isBookmarkRes ? "bookmark" : "bookmark-outline"}
-                size={24}
-                color={
-                  isBookmarkRes ? colors.primary[600] : colors.coolGray[500]
-                }
-              />
-            </TouchableOpacity>
-            <Center size="8" borderRadius={100} bgColor={"primary.600"}>
-              <Text fontWeight={700} fontSize={14} color="#fff">
-                {rating.toFixed(1)}
-              </Text>
-            </Center>
+              <Center size="8" borderRadius={100} bgColor={"primary.600"}>
+                <Text fontWeight={700} fontSize={14} color="#fff">
+                  {rating.toFixed(1)}
+                </Text>
+              </Center>
+            </HStack>
           </HStack>
-        </HStack>
-      </VStack>
-      <ScrollView>
+          <HStack space={2} flexWrap={"wrap"}>
+            {showService &&
+              res.services.map((service: any) => (
+                <HStack
+                  key={service.id}
+                  bg={"coolGray.100"}
+                  rounded={"xl"}
+                  padding={"2"}
+                  alignItems={"center"}
+                  space={1}
+                  minWidth={160}
+                  mb={2}
+                >
+                  <Image
+                    source={{ uri: service.image }}
+                    style={{ width: 32, height: 32, borderRadius: 8 }}
+                  />
+                  <Text fontSize={"sm"}>{service.name}</Text>
+                </HStack>
+              ))}
+          </HStack>
+          <TouchableOpacity onPress={() => setShowService(!showService)}>
+            <HStack
+              w="full"
+              justifyContent={"center"}
+              alignItems={"center"}
+              space={2}
+            >
+              <Text color={"primary.600"}>
+                {showService ? "Ẩn bớt" : "Xem thêm"}
+              </Text>
+              {showService ? (
+                <ArrowUp2 size="12" color={colors.primary[600]} />
+              ) : (
+                <ArrowDown2 size="12" color={colors.primary[600]} />
+              )}
+            </HStack>
+          </TouchableOpacity>
+        </VStack>
         <VStack p={4} space={4}>
           {listComment.map((comments) => (
             <Box key={comments.id}>

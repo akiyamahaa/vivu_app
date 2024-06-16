@@ -9,6 +9,10 @@ export enum EDistrict {
   HoangMai = "5",
   LongBien = "6",
   TayHo = "7",
+  NamTuLiem = "8",
+  BacTuLiem = "9",
+  ThanhXuan = "10",
+  HaDong = "11",
 }
 export const DistrictName = (districtId: string) => {
   switch (districtId) {
@@ -28,6 +32,14 @@ export const DistrictName = (districtId: string) => {
       return "Quận Long Biên";
     case "7":
       return "Quận Tây Hồ";
+    case "8":
+      return "Quận Nam Tử Liêm";
+    case "9": 
+      return "Quận Bắc Từ Liêm"
+    case "10": 
+      return "Quận Thanh XUân"
+    case "11":
+      return "QUận Hà Đông"
     default:
       return "Không xác định";
   }
@@ -68,6 +80,14 @@ export const selectDistrict = [
     label: "Quận Tây Hồ",
     value: EDistrict.TayHo,
   },
+  {
+    label: "Quận Nam Từ Liêm",
+    value: EDistrict.NamTuLiem,
+  },
+  {
+    label: "Quận Bắc Từ Liêm",
+    value: EDistrict.BacTuLiem,
+  },
 ];
 
 export enum ECategory {
@@ -87,6 +107,11 @@ export enum ECategory {
   BanhMi = "13",
   NemCuon = "14",
   Com = "15",
+  Phim = "16",
+  ThamQuan = "17",
+  BongNgo = '18',
+  Lau = "19",
+  Gimbap = "20"
 }
 
 export const selectCategory = [
@@ -153,5 +178,21 @@ export const selectCategory = [
   {
     label: "Xiên",
     value: ECategory.Xien,
+  },
+  {
+    label: "Phim",
+    value: ECategory.Phim,
+  },
+  {
+    label: "ThamQuan",
+    value: ECategory.ThamQuan,
+  },
+  {
+    label: "Lau",
+    value: ECategory.Lau,
+  },
+  {
+    label: "Gimbap",
+    value: ECategory.Gimbap,
   },
 ];

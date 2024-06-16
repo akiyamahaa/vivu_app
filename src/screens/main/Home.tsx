@@ -9,9 +9,9 @@ import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { firebaseDb } from "../../firebase";
 import { IRestaurant } from "../../type/restaurant";
 import PopUpFilter from "../../components/PopUpFilter";
-import { RootState, useAppDispatch, useAppSelector } from "../../store";
+import { useAppDispatch } from "../../store";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
-import { createRes, restaurantSample } from "../../data/mockup";
+import { createRes } from "../../data/mockup";
 import { removeLoading, setLoading } from "../../store/loading.reducer";
 import { removeDau } from "../../utils/utils";
 
@@ -52,9 +52,6 @@ const Home = (props: Props) => {
     });
     setListRes(restaurants);
     setAllRes(restaurants);
-
-    // setListRes(restaurantSample);
-    // setAllRes(restaurantSample);
   };
 
   useEffect(() => {
@@ -110,10 +107,10 @@ const Home = (props: Props) => {
           ))}
         </VStack>
       </ScrollView>
-      {/* <TouchableOpacity
+      <TouchableOpacity
         onPress={createRes}
         style={{ width: 100, height: 30, backgroundColor: "red" }}
-      ></TouchableOpacity> */}
+      ></TouchableOpacity>
     </Box>
   );
 };

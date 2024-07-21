@@ -107,10 +107,6 @@ const Home = (props: Props) => {
           ))}
         </VStack>
       </ScrollView>
-      <TouchableOpacity
-        onPress={createRes}
-        style={{ width: 100, height: 30, backgroundColor: "red" }}
-      ></TouchableOpacity>
     </Box>
   );
 };

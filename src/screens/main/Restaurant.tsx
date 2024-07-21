@@ -151,6 +151,8 @@ const Restaurant = (props: Props) => {
     return;
   }
 
+  console.log(res);
+
   return (
     <Box flex={1} bgColor={"#fff"}>
       <Box height="350">
@@ -230,7 +232,12 @@ const Restaurant = (props: Props) => {
             <Bag2 size="20" color={colors.coolGray[500]} />
             <Text color={"coolGray.500"} fontWeight={400} fontSize={14}>
               {res?.category
-                .map((cat: any) => selectCategory[cat].label)
+                .map((cat: string) => {
+                  const mapping = selectCategory.find(
+                    (item) => item.value === cat
+                  );
+                  return mapping ? mapping.label : " ";
+                })
                 .toString()
                 .replaceAll(",", " - ")}
             </Text>

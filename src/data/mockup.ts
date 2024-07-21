@@ -218,7 +218,8 @@ export const dataSample: IRestaurant[] = [
     name: "Nem nướng Nha Trang chị Quỳnh",
     category: [ECategory.NemCuon, ECategory.BuaTrua, ECategory.BuaToi],
     address: "201 P. Trần Quốc Hoàn, Dịch Vọng Hậu, Cầu Giấy, Hà Nội, Việt Nam",
-    image: "https://tse1.mm.bing.net/th?id=OIP.vW10ngRD_OsNhYUbF8iFNQHaHa&pid=Api&P=0&h=220",
+    image:
+      "https://tse1.mm.bing.net/th?id=OIP.vW10ngRD_OsNhYUbF8iFNQHaHa&pid=Api&P=0&h=220",
     lat: 21.042113,
     lng: 105.784811,
     price: {
@@ -422,7 +423,7 @@ export const dataSample: IRestaurant[] = [
     category: [ECategory.Phim],
     address: "Tràng Tiền Plaza, 24 Hai Bà Trưng, Q. Hoàn Kiếm, Tp. Hà Nội",
     image:
-      "https://img.jamja.vn/jamja-prod/khong-gian-cgv-trang-tien-plaza.jpg?cache=1",
+      "https://lh3.googleusercontent.com/p/AF1QipOgbGdpWcM64SV1UgSbxpqkMDDuf37zwkWD454I=s680-w680-h510",
     lat: 21.0242718,
     lng: 105.8507802,
     price: {
@@ -661,8 +662,7 @@ export const dataSample: IRestaurant[] = [
     category: [ECategory.Phim],
     address:
       "Vincom Plaza, Tầng 5, TTTM, Khu đô thị Vinhomes Riverside, Long Biên, Hà Nội, Việt Nam",
-    image:
-      "https://img.jamja.vn/jamja-prod/cgv-vincom-long-bien.jpg?cache=1",
+    image: "https://img.jamja.vn/jamja-prod/cgv-vincom-long-bien.jpg?cache=1",
     lat: 21.0507416,
     lng: 105.9141537,
     price: {

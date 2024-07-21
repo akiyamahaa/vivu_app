@@ -117,6 +117,7 @@ const PostAuth = (props: Props) => {
           setFormData,
           formData
         )}
+        setShowModal={setDatePickerVisibility}
         isShowModal={isDatePickerVisible}
         ExitBtn={() => (
           <Box w={"100%"}>

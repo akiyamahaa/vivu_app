@@ -11,6 +11,7 @@ type Props = {
   onChange: (value: Date) => void;
   isShowModal: Boolean;
   ExitBtn: React.FC;
+  setShowModal: any;
 };
 
 const DatePickerFormModal = ({
@@ -18,9 +19,11 @@ const DatePickerFormModal = ({
   onChange,
   isShowModal,
   ExitBtn,
+  setShowModal,
 }: Props) => {
   const handleConfirm = (date: Date) => {
     onChange(date);
+    setShowModal(false)
   };
   return (
     <Box
@@ -34,15 +37,19 @@ const DatePickerFormModal = ({
       alignItems={"center"}
       display={isShowModal ? "block" : "none"}
     >
-      <DateTimePicker
-        mode="date"
-        display="spinner"
-        value={value}
-        onChange={(event: DateTimePickerEvent, date: Date | undefined) =>
-          handleConfirm(date as Date)
-        }
-      />
-      <ExitBtn />
+      {isShowModal && (
+        <Box bg={"amber.200"}>
+          <DateTimePicker
+            mode="date"
+            display="spinner"
+            value={value}
+            onChange={(event: DateTimePickerEvent, date: Date | undefined) =>
+              handleConfirm(date as Date)
+            }
+          />
+          {/* <ExitBtn /> */}
+        </Box>
+      )}
     </Box>
   );
 };

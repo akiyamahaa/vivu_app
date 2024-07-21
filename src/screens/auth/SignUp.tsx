@@ -46,10 +46,6 @@ const SignUp = (props: Props) => {
     dispatch(setLoading());
     // Validate
     try {
-      console.log(
-        "🚀 ~ file: SignUp.tsx:47 ~ handleSignUp ~ formData:",
-        formData
-      );
       await signUpSchema.validate(formData);
       if (formData.password !== formData.repassword) {
         throw Error("Nhập lại mật khẩu chưa đúng");

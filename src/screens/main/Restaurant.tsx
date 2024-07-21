@@ -151,7 +151,6 @@ const Restaurant = (props: Props) => {
     return;
   }
 
-  console.log(res);
 
   return (
     <Box flex={1} bgColor={"#fff"}>

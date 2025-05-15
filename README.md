@@ -1,75 +1,43 @@
-# Foodo
+# Vivuhanoi
 
-<img src="assets/Logo.png" width="256" alt='logo'>
+**Vivuhanoi** is a mobile app that helps users discover, review, and share the best local eateries and entertainment spots in Hanoi.  
+Whether you're looking for a hidden street food stall, a cozy coffee shop, or a fun hangout spot, Vivuhanoi makes it easy to explore and enjoy the city's vibrant lifestyle.
 
-## App Introduction
+The app features a user-driven list of dining and entertainment locations, allowing you to quickly find places that match your mood, preferences, and current location.
 
-https://drive.google.com/file/d/1As6Po9MXR3TpIluslgHHEMlYNeOOQP10/view
+Vivuhanoi aims to bring people closer to the authentic Hanoi experience by making city exploration more engaging, social, and personalized.
 
-## Table of Contents
+---
 
-- [Table of Contents](#table-of-contents)
-  - [About](#about)
-  - [Features](#features)
-  - [Screenshots](#screenshots)
-  - [Future Plans](#future-plans)
-  - [Experience The Demo of Foodo](#experience-the-demo-of-Foodo)
-    - [Prerequisites](#prerequisites)
-    - [Installation](#installation)
+## 🌟 Features
 
-## About
+- Create and log into your personal account  
+- Search for food and entertainment spots near you  
+- Filter places by name, category, and distance  
+- Read and write reviews from other users  
+- Save places to your personal favorites list  
 
-Foodo is a mobile app that helps user discover and enjoy the best street food and small restaurants in Hanoi. With Foodo, you can find hidden gems that you wouldn't find on other apps, and make the decision of where to eat quickly and easily.
+---
 
-The app offers a searchable and sortable list of street vendors and small restaurants, so user can find the perfect place to eat based on their preferences, such as cuisine and location.
+## 🚀 Future Plans
 
-Foodo aims to make dining out fun and efficient, and encourages you to explore the Hanoi's diverse and delicious culinary scene.
+- A map-based interface showing all listed locations  
+- A user submission form for hidden or lesser-known places  
+- Filtering options for price range and dietary preferences  
+- The ability to make reservations directly through the app  
+- Expansion to other major cities in Vietnam  
 
-## Features
+---
 
-- Creating and logging into your own account
-- Search for restaurants near you
-- Filter restaurants by name, category, and distance
-- Read and write reviews from other users
-- Add restaurants to your favourites list
+## 🛠️ Technology Stack
 
-## Screenshots
+Vivuhanoi is built using modern and scalable technologies for smooth performance and a great user experience:
 
-<p float='left'>
-<img src="assets/login.PNG" width="45%" alt='screen1'>
-<img src="assets/home.PNG" width="45%" alt='screen1'>
-<img src="assets/Search.PNG" width="45%" alt='screen1'>
-<img src="assets/Sort.PNG" width="45%" alt='screen1'>
-<img src="assets/restaurantScreen.png" width="45%" alt='screen1'>
-<img src="assets/favourite.PNG" width="45%" alt='screen1'>
-<img src="assets/profile.PNG" width="45%" alt='screen1'>
-</p>
+- **React Native** – cross-platform mobile development  
+- **NativeWind** – utility-first styling with Tailwind CSS for React Native  
+- **Firebase** – backend infrastructure:
+  - **Firestore** – real-time cloud database  
+  - **Firebase Authentication** – secure user login  
+  - **Firebase Storage** – image/media file hosting  
 
-## Future-plans
-
-- A map-based view of all restaurants in the app
-- A form for users to upload their favourite street vendors that don't receive much attention
-- The ability to filter restaurants by price and dietary restrictions
-- The ability to make reservations directly through the app
-- Expanding the app to other cities in Vietnam
-
-## Experience the demo of Foodo
-
-### Prerequisites
-
-- Node.Js: https://nodejs.org/en
-- Expo: https://docs.expo.dev/get-started/installation/
-- Yarn: https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable
-
-### Installation
-
-- Clone the repository to your local machine
-- Install dependencies using npm or yarn
-- Run the app using `yarn start` or another suitable command
-
-```bash
-git clone https://github.com/garan1610/Foodo-app.git
-cd expo-tech-app
-yarn
-yarn start
-```
+This tech stack ensures fast development, real-time sync, and high scalability.
